@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thống kê chấm công ngoài giờ</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="mark">NG</div>
+  <div><h1>Thống kê chấm công ngoài giờ</h1><div class="sub" id="upd">Đang tải…</div></div>
+</div></div>
+
+<div class="wrap">
+  <a class="backlink" href="index.html">← Về trang chấm công</a>
+  <div class="toast" id="toast"></div>
+
+  <div class="two" style="margin-bottom:14px">
+    <div class="field"><label>Ngày xem</label><input type="date" id="ngay"></div>
+    <div class="field"><label>Tháng (YYYY-MM)</label><input type="text" id="thang" placeholder="2026-10"></div>
+  </div>
+  <button class="btn ghost" id="reload" style="margin-bottom:16px">Làm mới số liệu</button>
+
+  <div id="loading" class="loading">Đang tải số liệu…</div>
+
+  <div id="content" style="display:none">
+    <div class="kpi">
+      <div class="box"><div class="n" id="kDay">0</div><div class="l">Lượt đi làm (ngày xem)</div></div>
+      <div class="box"><div class="n" id="kWeek">0</div><div class="l">Lượt trong tuần</div></div>
+      <div class="box"><div class="n" id="kMonth">0</div><div class="l">Lượt trong tháng</div></div>
+      <div class="box"><div class="n" id="kBp">0</div><div class="l">Bộ phận có người (ngày)</div></div>
+    </div>
+
+    <div class="panel">
+      <h2>Số buổi mỗi người (trong tháng)</h2>
+      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Số lần</th><th class="num">Quy đổi</th><th class="num">Thứ 7</th><th class="num">16-18h</th></tr></thead>
+      <tbody id="tbNguoi"></tbody></table>
+      <div class="empty" id="emNguoi" style="display:none">Chưa có dữ liệu trong tháng.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Số người đi làm theo bộ phận (ngày xem)</h2>
+      <table><thead><tr><th>Bộ phận</th><th class="num">Số người</th></tr></thead>
+      <tbody id="tbBp"></tbody></table>
+      <div class="empty" id="emBp" style="display:none">Ngày này chưa có chấm công.</div>
+    </div>
+
+    <div class="panel">
+      <h2>Chi tiết ngày xem</h2>
+      <table><thead><tr><th>Bộ phận</th><th>Họ tên</th><th>Loại</th><th>Ghi chú / đổi ca</th></tr></thead>
+      <tbody id="tbChiTiet"></tbody></table>
+      <div class="empty" id="emChiTiet" style="display:none">Ngày này chưa có chấm công.</div>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+var today=new Date(),tz=today.getTimezoneOffset()*60000;
+document.getElementById('ngay').value=new Date(today-tz).toISOString().slice(0,10);
+document.getElementById('thang').value=new Date(today-tz).toISOString().slice(0,7);
+document.getElementById('reload').onclick=load;
+load();
+
+function load(){
+  show(document.getElementById('loading'),true);
+  document.getElementById('content').style.display='none';
+  var ngay=document.getElementById('ngay').value;
+  var thang=document.getElementById('thang').value;
+  var url=APP_CONFIG.API_URL+'?action=stats&ngay='+encodeURIComponent(ngay)+'&thang='+encodeURIComponent(thang);
+  fetch(url).then(r=>r.json()).then(render).catch(function(e){
+    document.getElementById('loading').textContent='Lỗi tải: '+e.message+' — kiểm tra API_URL.';
+  });
+}
+
+function render(d){
+  show(document.getElementById('loading'),false);
+  document.getElementById('content').style.display='block';
+  document.getElementById('upd').textContent='Cập nhật: '+(d.capNhat||'');
+  set('kDay',d.dDay); set('kWeek',d.dWeek); set('kMonth',d.dMonth); set('kBp',(d.theoBoPhan||[]).length);
+
+  var tn=document.getElementById('tbNguoi');
+  if((d.theoNguoi||[]).length){ document.getElementById('emNguoi').style.display='none';
+    tn.innerHTML=d.theoNguoi.map(x=>'<tr><td>'+esc(x.hoten)+'</td><td>'+esc(x.bp)+'</td>'+
+      '<td class="num">'+x.lan+'</td><td class="num"><b>'+fmt(x.quy)+'</b></td>'+
+      '<td class="num">'+fmt(x.thu7)+'</td><td class="num">'+fmt(x.c1618)+'</td></tr>').join('');
+  } else { tn.innerHTML=''; document.getElementById('emNguoi').style.display='block'; }
+
+  var tb=document.getElementById('tbBp');
+  if((d.theoBoPhan||[]).length){ document.getElementById('emBp').style.display='none';
+    tb.innerHTML=d.theoBoPhan.map(x=>'<tr><td>'+esc(x.bp)+'</td><td class="num">'+x.so+'</td></tr>').join('');
+  } else { tb.innerHTML=''; document.getElementById('emBp').style.display='block'; }
+
+  var tc=document.getElementById('tbChiTiet');
+  if((d.chiTietNgay||[]).length){ document.getElementById('emChiTiet').style.display='none';
+    tc.innerHTML=d.chiTietNgay.map(function(x){
+      var tag=x.ca==='THU7'?'<span class="tag s7">T7</span>':'<span class="tag s16">16-18</span>';
+      return '<tr><td>'+esc(x.bp)+'</td><td>'+esc(x.hoten)+'</td><td>'+tag+' '+esc(x.loai)+'</td><td>'+esc(x.ghichu||'')+'</td></tr>';
+    }).join('');
+  } else { tc.innerHTML=''; document.getElementById('emChiTiet').style.display='block'; }
+}
+
+function set(id,v){document.getElementById(id).textContent=v;}
+function fmt(n){return (Math.round(n*10)/10).toString();}
+function show(el,on){el.style.display=on?'block':'none';}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+</script>
+</body>
+</html>

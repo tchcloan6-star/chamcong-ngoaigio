@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chấm công ngoài giờ — chọn bộ phận</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="mark">NG</div>
+  <div><h1 id="t">Chấm công ngoài giờ</h1><div class="sub" id="s">BV Răng Hàm Mặt TW TP.HCM</div></div>
+</div></div>
+
+<div class="wrap">
+  <!-- THỨ 7: 1 link duy nhất -->
+  <p class="section-title">Ca thứ 7</p>
+  <a class="hero-card" id="thu7Card" href="chamcong.html?ca=THU7">
+    <div class="hero-left">
+      <span class="tag s7">Thứ 7</span>
+      <div class="hero-title">Chấm công ngày thứ 7</div>
+      <div class="hero-sub" id="thu7Info">Đang tải…</div>
+    </div>
+    <div class="hero-arrow">→</div>
+  </a>
+
+  <!-- CA 16-18: link riêng theo đầu mối -->
+  <p class="section-title" style="margin-top:22px">Ca 16–18h — chọn bộ phận</p>
+  <p class="hint">Mỗi bộ phận do đầu mối phụ trách chấm công. Chạm vào bộ phận để mở link chấm.</p>
+  <div id="loading" class="loading">Đang tải danh sách…</div>
+  <div class="bp-grid" id="grid"></div>
+
+  <div class="submitbar">
+    <a class="btn ghost" id="dashLink" href="dashboard.html" style="display:block;text-align:center">Xem bảng thống kê</a>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+var DATA=null;
+document.getElementById('t').textContent=APP_CONFIG.TEN_HE_THONG;
+document.getElementById('s').textContent=APP_CONFIG.TEN_DON_VI;
+
+fetch('data.json').then(r=>r.json()).then(d=>{DATA=d; render();})
+  .catch(e=>{document.getElementById('loading').textContent='Lỗi tải data.json: '+e.message;});
+
+function render(){
+  document.getElementById('loading').style.display='none';
+
+  // THU7 hero card info
+  var t7bps=Object.keys(DATA.THU7||{});
+  var t7total=0; t7bps.forEach(function(bp){t7total+=(DATA.THU7[bp]||[]).length;});
+  var dm7=DATA.dau_moi_thu7||'';
+  document.getElementById('thu7Info').textContent=t7bps.length+' bộ phận · '+t7total+' người'+(dm7?' · Đầu mối: '+dm7:'');
+
+  // C1618 grid
+  var grid=document.getElementById('grid'); grid.innerHTML='';
+  var ds=DATA.C1618||{};
+  var dm=DATA.dau_moi_c1618||{};
+  DATA.bo_phan.forEach(function(bp){
+    if(!ds[bp]||!ds[bp].length) return;
+    var el=document.createElement('a');
+    el.className='bp-card';
+    el.href='chamcong.html?ca=C1618&bp='+encodeURIComponent(bp);
+    var dmName=dm[bp]||'';
+    el.innerHTML='<div class="nm">'+esc(bp)+'</div>'+
+      '<div class="ct">'+ds[bp].length+' người'+(dmName?' · <b>'+esc(dmName)+'</b>':'')+'</div>';
+    grid.appendChild(el);
+  });
+  if(!grid.children.length) grid.innerHTML='<div class="empty">Chưa có bộ phận nào.</div>';
+}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+</script>
+</body>
+</html>

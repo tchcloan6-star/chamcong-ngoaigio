@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chấm công bộ phận</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="mark">NG</div>
+  <div><h1 id="bpName">Chấm công</h1><div class="sub" id="caName">Ngoài giờ</div></div>
+</div></div>
+
+<div class="wrap">
+  <a class="backlink" href="index.html">← Về trang chủ</a>
+  <div class="toast" id="toast"></div>
+
+  <div class="meta">
+    <div class="field">
+      <label class="req">Ngày làm việc</label>
+      <input type="date" id="ngay">
+    </div>
+    <div class="two">
+      <div class="field">
+        <label class="req">Người phụ trách chấm</label>
+        <input type="text" id="nguoi" placeholder="Họ tên người gửi">
+      </div>
+      <div class="field">
+        <label>Liên hệ (SĐT/Email)</label>
+        <input type="text" id="lienhe" placeholder="Không bắt buộc">
+      </div>
+    </div>
+  </div>
+
+  <div id="sections"></div>
+
+  <div class="submitbar">
+    <button class="btn" id="btnSend">Gửi chấm công</button>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+var P=new URLSearchParams(location.search);
+var CA=P.get('ca')||'THU7';
+var BP=P.get('bp')||'';  // empty → THU7 all-bp mode
+var DATA=null;
+var MODE='single'; // 'single' = 1 bp (C1618), 'all' = all bps (THU7)
+var BP_LIST=[];     // list of bps to render
+
+fetch('data.json').then(r=>r.json()).then(d=>{DATA=d; init();});
+
+function init(){
+  var today=new Date(), tz=today.getTimezoneOffset()*60000;
+  document.getElementById('ngay').value=new Date(today-tz).toISOString().slice(0,10);
+
+  if(CA==='THU7' && !BP){
+    // THU7 all-bp mode
+    MODE='all';
+    BP_LIST=DATA.bo_phan.filter(function(bp){return DATA.THU7&&DATA.THU7[bp]&&DATA.THU7[bp].length;});
+    document.getElementById('bpName').textContent='Chấm công thứ 7';
+    document.getElementById('caName').textContent=BP_LIST.length+' bộ phận · '+DATA.ca.THU7.label;
+    // pre-fill đầu mối
+    if(DATA.dau_moi_thu7) document.getElementById('nguoi').value=DATA.dau_moi_thu7;
+    renderAll();
+  } else {
+    // single bp mode (C1618 or THU7 with bp param)
+    MODE='single';
+    BP_LIST=[BP];
+    document.getElementById('bpName').textContent=BP;
+    document.getElementById('caName').textContent=DATA.ca[CA].label;
+    // pre-fill đầu mối for C1618
+    if(CA==='C1618' && DATA.dau_moi_c1618 && DATA.dau_moi_c1618[BP]){
+      document.getElementById('nguoi').value=DATA.dau_moi_c1618[BP];
+    }
+    renderSingle();
+  }
+}
+
+/* ===== THU7 ALL-BP MODE: accordion ===== */
+function renderAll(){
+  var html='';
+  BP_LIST.forEach(function(bp){
+    var list=DATA.THU7[bp];
+    var loai=DATA.ca.THU7.loai;
+    var defLoai='Ng thứ 7 cả ngày';
+
+    html+='<div class="acc" data-bp="'+esc(bp)+'">';
+    html+='<button class="acc-head" data-bp="'+esc(bp)+'">';
+    html+='<span class="acc-title">'+esc(bp)+'</span>';
+    html+='<span class="acc-meta">'+list.length+' người</span>';
+    html+='<span class="acc-arrow">▸</span>';
+    html+='</button>';
+    html+='<div class="acc-body" data-bp="'+esc(bp)+'" style="display:none">';
+
+    html+='<div class="bulk">';
+    html+='<button class="bulk-on" data-bp="'+esc(bp)+'">Tick tất cả</button>';
+    html+='<button class="bulk-off" data-bp="'+esc(bp)+'">Bỏ tick</button>';
+    html+='</div>';
+
+    html+=list.map(function(p,i){
+      var opts=loai.map(function(l){return '<option'+(l===defLoai?' selected':'')+'>'+esc(l)+'</option>';}).join('');
+      return personHTML('THU7', bp, i, p, opts, loai.length>1);
+    }).join('');
+
+    html+='</div></div>';
+  });
+
+  var box=document.getElementById('sections');
+  box.innerHTML=html;
+  // expand first section by default
+  var first=box.querySelector('.acc-body');
+  if(first){first.style.display='block'; first.parentElement.classList.add('open');}
+  attachEvents(box);
+}
+
+/* ===== SINGLE BP MODE ===== */
+function renderSingle(){
+  var list=(DATA[CA]&&DATA[CA][BP])||[];
+  var loai=DATA.ca[CA].loai;
+  var defLoai=CA==='THU7'?'Ng thứ 7 cả ngày':'Ng 16-18h';
+
+  var html='<div class="list-head">';
+  html+='<span class="section-title" style="margin:0">Danh sách nhân sự</span>';
+  html+='<span class="count">'+list.length+' người</span></div>';
+  html+='<div class="bulk">';
+  html+='<button class="bulk-on" data-bp="'+esc(BP)+'">Tick tất cả</button>';
+  html+='<button class="bulk-off" data-bp="'+esc(BP)+'">Bỏ tick</button>';
+  html+='</div>';
+
+  html+=list.map(function(p,i){
+    var opts=loai.map(function(l){return '<option'+(l===defLoai?' selected':'')+'>'+esc(l)+'</option>';}).join('');
+    return personHTML(CA, BP, i, p, opts, loai.length>1);
+  }).join('');
+
+  if(!list.length) html+='<div class="empty">Bộ phận này chưa có người trong ca.</div>';
+
+  var box=document.getElementById('sections');
+  box.innerHTML=html;
+  attachEvents(box);
+}
+
+/* ===== Shared person card HTML ===== */
+function personHTML(ca, bp, i, p, opts, showSelect){
+  var key=encodeAttr(bp)+'_'+i;
+  var loaiCtl=showSelect
+    ?'<div class="ploai"><select data-key="'+key+'" class="selLoai">'+opts+'</select></div>'
+    :'<input type="hidden" class="selLoai" data-key="'+key+'" value="'+esc(DATA.ca[ca].loai[0])+'">';
+  return '<div class="person" data-key="'+key+'">'+
+    '<div class="prow">'+
+      '<button class="tick" data-key="'+key+'" aria-label="Đi làm">✓</button>'+
+      '<div class="pinfo"><div class="pn">'+esc(p.hoten)+'</div>'+
+        '<div class="pm">'+esc(p.chucvu||'')+(p.khoa?' · '+esc(p.khoa):'')+'</div></div>'+
+      loaiCtl+
+    '</div>'+
+    '<button class="note-toggle" data-key="'+key+'">+ Ghi chú / đổi ca</button>'+
+    '<div class="note-wrap" data-key="'+key+'">'+
+      '<input type="text" class="note" data-key="'+key+'" placeholder="VD: Đổi ca với A, trực thay buổi chiều…">'+
+    '</div>'+
+  '</div>';
+}
+
+/* ===== Event delegation ===== */
+function attachEvents(box){
+  box.addEventListener('click',function(e){
+    var t=e.target;
+    // accordion toggle
+    if(t.closest('.acc-head')){
+      var head=t.closest('.acc-head');
+      var bp=head.dataset.bp;
+      var body=box.querySelector('.acc-body[data-bp="'+CSS.escape(bp)+'"]');
+      var acc=head.parentElement;
+      var open=body.style.display!=='none';
+      body.style.display=open?'none':'block';
+      acc.classList.toggle('open',!open);
+      return;
+    }
+    // tick
+    if(t.classList.contains('tick')){
+      var row=box.querySelector('.person[data-key="'+t.dataset.key+'"]');
+      row.classList.toggle('on');
+    }
+    // note toggle
+    if(t.classList.contains('note-toggle')){
+      var w=box.querySelector('.note-wrap[data-key="'+t.dataset.key+'"]');
+      w.classList.toggle('show');
+    }
+    // bulk on
+    if(t.classList.contains('bulk-on')){
+      var bp=t.dataset.bp;
+      box.querySelectorAll('.person[data-key^="'+encodeAttr(bp)+'_"]').forEach(function(r){r.classList.add('on');});
+    }
+    // bulk off
+    if(t.classList.contains('bulk-off')){
+      var bp=t.dataset.bp;
+      box.querySelectorAll('.person[data-key^="'+encodeAttr(bp)+'_"]').forEach(function(r){r.classList.remove('on');});
+    }
+  });
+}
+
+/* ===== Submit ===== */
+document.getElementById('btnSend').onclick=async function(){
+  var ngay=v('ngay'), nguoi=v('nguoi').trim(), lienhe=v('lienhe').trim();
+  if(!ngay||!nguoi){ return toast(false,'Vui lòng nhập Ngày và Người phụ trách.'); }
+
+  var b=document.getElementById('btnSend'); b.disabled=true;
+  var total=BP_LIST.length, done=0, errors=[];
+
+  for(var c=0;c<BP_LIST.length;c++){
+    var bp=BP_LIST[c];
+    b.textContent='Đang gửi '+(c+1)+'/'+total+'…';
+    var list=(DATA[CA][bp]||[]);
+    var rows=list.map(function(p,i){
+      var key=encodeAttr(bp)+'_'+i;
+      var row=document.querySelector('.person[data-key="'+key+'"]');
+      var loai=document.querySelector('.selLoai[data-key="'+key+'"]').value;
+      var noteEl=document.querySelector('.note[data-key="'+key+'"]');
+      var note=noteEl?noteEl.value.trim():'';
+      return {manv:p.manv,hoten:p.hoten,chucvu:p.chucvu,khoa:p.khoa,
+              loai:loai, diLam:row.classList.contains('on'), ghiChu:note};
+    });
+    var payload={action:'submit',ngay:ngay,ca:CA,boPhan:bp,
+      nguoiPhuTrach:nguoi,lienHe:lienhe,rows:rows};
+
+    try{
+      var res=await fetch(APP_CONFIG.API_URL,{method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)}).then(function(r){return r.json();});
+      if(res.ok) done++; else errors.push(bp+': '+res.msg);
+    }catch(e){
+      errors.push(bp+': '+e.message);
+    }
+  }
+
+  b.disabled=false; b.textContent='Gửi chấm công';
+  if(errors.length){
+    toast(false,'Lỗi: '+errors.join('; '));
+  }else{
+    toast(true,'Đã gửi thành công '+done+(total>1?' bộ phận':'')+'. ✓');
+  }
+};
+
+function v(id){return document.getElementById(id).value;}
+function toast(ok,t){var el=document.getElementById('toast');el.className='toast '+(ok?'ok':'err');el.textContent=t;window.scrollTo(0,0);}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function encodeAttr(s){return (s||'').replace(/[^a-zA-Z0-9À-ɏḀ-ỿ_-]/g,'_');}
+</script>
+</body>
+</html>
