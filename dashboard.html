@@ -34,7 +34,7 @@
 
     <div class="panel">
       <h2>Số lượt mỗi người (trong tháng)</h2>
-      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Tổng lượt</th><th class="num">Thứ 7</th><th class="num">16-18h</th></tr></thead>
+      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Tổng lượt</th><th class="num">Thứ 7</th><th class="num">16-18h</th><th class="num">T7 Sáng</th><th class="num">T7 Chiều</th><th class="num">T7 Cả ngày</th><th class="num">16-18h (x)</th></tr></thead>
       <tbody id="tbNguoi"></tbody></table>
       <div class="empty" id="emNguoi" style="display:none">Chưa có dữ liệu trong tháng.</div>
     </div>
@@ -84,7 +84,9 @@ function render(d){
   if((d.theoNguoi||[]).length){ document.getElementById('emNguoi').style.display='none';
     tn.innerHTML=d.theoNguoi.map(x=>'<tr><td>'+esc(x.hoten)+'</td><td>'+esc(x.bp)+'</td>'+
       '<td class="num"><b>'+x.lan+'</b></td>'+
-      '<td class="num">'+fmt(x.thu7)+'</td><td class="num">'+fmt(x.c1618)+'</td></tr>').join('');
+      '<td class="num">'+fmt(x.thu7)+'</td><td class="num">'+fmt(x.c1618)+'</td>'+
+      '<td class="num">'+fmt(x.t7s)+'</td><td class="num">'+fmt(x.t7c)+'</td>'+
+      '<td class="num">'+fmt(x.t7cn)+'</td><td class="num">'+fmt(x.n1618)+'</td></tr>').join('');
   } else { tn.innerHTML=''; document.getElementById('emNguoi').style.display='block'; }
 
   var tb=document.getElementById('tbBp');
