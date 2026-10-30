@@ -33,8 +33,8 @@
     </div>
 
     <div class="panel">
-      <h2>Số buổi mỗi người (trong tháng)</h2>
-      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Số lần</th><th class="num">Quy đổi</th><th class="num">Thứ 7</th><th class="num">16-18h</th></tr></thead>
+      <h2>Số lượt mỗi người (trong tháng)</h2>
+      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Tổng lượt</th><th class="num">Thứ 7</th><th class="num">16-18h</th></tr></thead>
       <tbody id="tbNguoi"></tbody></table>
       <div class="empty" id="emNguoi" style="display:none">Chưa có dữ liệu trong tháng.</div>
     </div>
@@ -83,7 +83,7 @@ function render(d){
   var tn=document.getElementById('tbNguoi');
   if((d.theoNguoi||[]).length){ document.getElementById('emNguoi').style.display='none';
     tn.innerHTML=d.theoNguoi.map(x=>'<tr><td>'+esc(x.hoten)+'</td><td>'+esc(x.bp)+'</td>'+
-      '<td class="num">'+x.lan+'</td><td class="num"><b>'+fmt(x.quy)+'</b></td>'+
+      '<td class="num"><b>'+x.lan+'</b></td>'+
       '<td class="num">'+fmt(x.thu7)+'</td><td class="num">'+fmt(x.c1618)+'</td></tr>').join('');
   } else { tn.innerHTML=''; document.getElementById('emNguoi').style.display='block'; }
 

@@ -219,7 +219,8 @@ document.getElementById('btnSend').onclick=async function(){
       var note=noteEl?noteEl.value.trim():'';
       return {manv:p.manv,hoten:p.hoten,chucvu:p.chucvu,khoa:p.khoa,
               loai:loai, diLam:row.classList.contains('on'), ghiChu:note};
-    });
+    }).filter(function(r){ return r.diLam; });
+    if(!rows.length){ done++; continue; }
     var payload={action:'submit',ngay:ngay,ca:CA,boPhan:bp,
       nguoiPhuTrach:nguoi,lienHe:lienhe,rows:rows};
 
