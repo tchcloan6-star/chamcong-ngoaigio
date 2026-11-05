@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-05",
  "ca": {
   "THU7": {
    "label": "Ngày thứ 7",
@@ -18,20 +18,22 @@
  },
  "dau_moi_thu7": "Chị Thu",
  "dau_moi_c1618": {
-  "TRỰC LÃNH ĐẠO": "Liên",
-  "TIẾP BỆNH": "Chị Thu",
-  "THU VIỆN PHÍ": "Chị Hường",
-  "KIỂM SOÁT NHIỄM KHUẨN": "Vi KSNK",
-  "CÔNG NGHỆ THÔNG TIN": "CNTT",
-  "BẢO TRÌ ĐIỆN NƯỚC": "Vinh",
-  "BẢO TRÌ THIẾT BỊ Y TẾ": "Thái",
-  "PHÒNG TÀI CHÍNH KẾ TOÁN": "Tuyến",
-  "KHOA DƯỢC": "Tuệ",
-  "TỔ MUA SẮM": "Yến",
-  "GHẾ ĐIỀU TRỊ": "Liên",
-  "X-QUANG": "X quang",
-  "XÉT NGHIỆM": "XN",
-  "VỆ SINH": "Tài"
+  "TRỰC LÃNH ĐẠO": "Bà Bùi Thị Liên",
+  "TIẾP BỆNH": "Bà Văn Nguyệt Thu",
+  "THƯ KÝ BAN ĐIỀU HÀNH": "Bà Văn Nguyệt Thu",
+  "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG": "Bà Nguyễn Thị Kim Loan",
+  "THU VIỆN PHÍ": "Bà Ngô Thị Hường",
+  "KIỂM SOÁT NHIỄM KHUẨN": "Bà Nguyễn Thị Tường Vi",
+  "CÔNG NGHỆ THÔNG TIN": "Ông Nguyễn Minh Lai",
+  "BẢO TRÌ ĐIỆN NƯỚC": "Ông Trần Quang Vinh",
+  "BẢO TRÌ THIẾT BỊ Y TẾ": "Ông Bùi Duy Thái",
+  "PHÒNG TÀI CHÍNH KẾ TOÁN": "Bà Nguyễn Thị Kim Tuyến",
+  "KHOA DƯỢC": "Bà Lê Hoàng Phương Tuệ",
+  "TỔ MUA SẮM": "Bà Đặng Thị Kim Yến",
+  "GHẾ ĐIỀU TRỊ": "Bà Bùi Thị Liên",
+  "X-QUANG": "Ông Phạm Anh Khoa",
+  "XÉT NGHIỆM": "Bà Phạm Bình Hạnh Nguyên",
+  "VỆ SINH": "Ông Trương Tấn Tài"
  },
  "bo_phan": [
   "TRỰC LÃNH DẠO",
@@ -59,6 +61,12 @@
   "ĐIỀU TRỊ - RĂNG TRẺ EM",
   "ĐIỀU TRỊ - KHU NHA TỔNG QUÁT",
   "ĐIỀU TRỊ - GHẾ NHỔ PTHM",
+  "KHOA NRTPT",
+  "KHOA CRNN",
+  "KHOA NHA CHU",
+  "KHOA DƯỢC - NV NHÀ THUỐC",
+  "THƯ KÝ BAN ĐIỀU HÀNH",
+  "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG",
   "TRỰC LÃNH ĐẠO",
   "GHẾ ĐIỀU TRỊ"
  ],
@@ -744,7 +752,7 @@
     "manv": "NV00420",
     "hoten": "Bùi Công Toản",
     "chucvu": "Trưởng phòng",
-    "khoa": "Vật tư - TTBYT"
+    "khoa": "Vật tư - Trang thiết bị Y tế"
    }
   ],
   "X-QUANG": [
@@ -1846,6 +1854,66 @@
     "chucvu": "Nhân viên",
     "khoa": "PTHM"
    }
+  ],
+  "KHOA NRTPT": [
+   {
+    "manv": "NV00102",
+    "hoten": "Nguyễn Hoàng Việt Hùng",
+    "chucvu": "Nhân viên",
+    "khoa": "ĐÀO TẠO & NGHIÊN CỨU KHOA HỌC"
+   }
+  ],
+  "KHOA CRNN": [
+   {
+    "manv": "NV00196",
+    "hoten": "Bùi Minh Anh",
+    "chucvu": "Nhân viên",
+    "khoa": "KH-TH"
+   }
+  ],
+  "KHOA NHA CHU": [
+   {
+    "manv": "NV00197",
+    "hoten": "Nguyễn Thị Thanh Ngọc",
+    "chucvu": "Nhân viên",
+    "khoa": "KH-TH"
+   }
+  ],
+  "KHOA DƯỢC - NV NHÀ THUỐC": [
+   {
+    "manv": "NV00094",
+    "hoten": "Huỳnh Thị Băng Châu",
+    "chucvu": "Nhân viên",
+    "khoa": "Dược"
+   },
+   {
+    "manv": "NV00095",
+    "hoten": "Lâm Song Ngân",
+    "chucvu": "Nhân viên",
+    "khoa": "Dược"
+   }
+  ],
+  "THƯ KÝ BAN ĐIỀU HÀNH": [
+   {
+    "manv": "NV0014",
+    "hoten": "Văn Nguyệt Thu",
+    "chucvu": "Phụ trách phòng",
+    "khoa": "CTXH"
+   },
+   {
+    "manv": "NV0027",
+    "hoten": "Bùi Thị Liên",
+    "chucvu": "Nhân viên",
+    "khoa": "TCHC"
+   }
+  ],
+  "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG": [
+   {
+    "manv": "NV0026",
+    "hoten": "Nguyễn Thị Kim Loan",
+    "chucvu": "Nhân viên",
+    "khoa": "TCHC"
+   }
   ]
  },
  "C1618": {
@@ -2460,7 +2528,7 @@
     "manv": "NV00420",
     "hoten": "Bùi Công Toản",
     "chucvu": "Trưởng phòng",
-    "khoa": "Vật tư - TTBYT"
+    "khoa": "Vật tư - Trang thiết bị Y tế"
    }
   ],
   "GHẾ ĐIỀU TRỊ": [
@@ -2597,12 +2665,6 @@
     "khoa": "KHTH"
    },
    {
-    "manv": "NV0121",
-    "hoten": "Nguyễn Thị Tâm",
-    "chucvu": "Bác sĩ",
-    "khoa": "KHTH"
-   },
-   {
     "manv": "NV0122",
     "hoten": "Võ Thị Hoàng Hoanh",
     "chucvu": "Điều dưỡng",
@@ -2733,6 +2795,12 @@
     "hoten": "Thái Phước Tài",
     "chucvu": "Điều dưỡng",
     "khoa": "PTHM"
+   },
+   {
+    "manv": "NV0121",
+    "hoten": "Nguyễn Thị Tâm",
+    "chucvu": "Bác sĩ",
+    "khoa": "KHTH"
    }
   ],
   "X-QUANG": [
@@ -2943,6 +3011,28 @@
     "hoten": "Nguyễn Thị Mỹ Lan",
     "chucvu": "Nhân viên",
     "khoa": "QT"
+   }
+  ],
+  "THƯ KÝ BAN ĐIỀU HÀNH": [
+   {
+    "manv": "NV0014",
+    "hoten": "Văn Nguyệt Thu",
+    "chucvu": "Phụ trách phòng",
+    "khoa": "CTXH"
+   },
+   {
+    "manv": "NV0027",
+    "hoten": "Bùi Thị Liên",
+    "chucvu": "Nhân viên",
+    "khoa": "TCHC"
+   }
+  ],
+  "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG": [
+   {
+    "manv": "NV0026",
+    "hoten": "Nguyễn Thị Kim Loan",
+    "chucvu": "Nhân viên",
+    "khoa": "TCHC"
    }
   ]
  }
