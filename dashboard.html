@@ -3,72 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thống kê chấm công ngoài giờ</title>
+<title>Theo dõi chấm công ngoài giờ</title>
 <link rel="stylesheet" href="app.css">
+<style>
+.recent-table{width:100%;border-collapse:collapse;font-size:14px}
+.recent-table th{background:#2563eb;color:#fff;padding:8px 10px;text-align:left;position:sticky;top:0;font-weight:600;font-size:13px}
+.recent-table td{padding:7px 10px;border-bottom:1px solid #e2e8f0}
+.recent-table tr:hover td{background:#eff6ff}
+.recent-table .stt{width:36px;text-align:center;color:#94a3b8}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+.s7{background:#fef3c7;color:#92400e}
+.s16{background:#dbeafe;color:#1e40af}
+.kpi{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.kpi .box{flex:1;min-width:120px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:28px;font-weight:700;color:#1e3a8a}
+.kpi .l{font-size:12px;color:#64748b;margin-top:2px}
+.group-head{background:#f1f5f9;font-weight:600}
+.group-head td{padding:10px;color:#334155;border-bottom:2px solid #cbd5e1}
+.note{color:#64748b;font-size:13px;font-style:italic}
+</style>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
   <div class="mark">NG</div>
-  <div><h1>Thống kê chấm công ngoài giờ</h1><div class="sub" id="upd">Đang tải…</div></div>
+  <div><h1>Theo dõi chấm công</h1><div class="sub" id="upd">Đang tải…</div></div>
 </div></div>
 
 <div class="wrap">
   <a class="backlink" href="index.html">← Về trang chấm công</a>
   <div class="toast" id="toast"></div>
 
-  <div class="two" style="margin-bottom:14px">
-    <div class="field"><label>Ngày xem</label><input type="date" id="ngay"></div>
-    <div class="field"><label>Tháng (YYYY-MM)</label><input type="text" id="thang" placeholder="2026-10"></div>
-  </div>
-  <button class="btn ghost" id="reload" style="margin-bottom:16px">Làm mới số liệu</button>
+  <button class="btn ghost" id="reload" style="margin-bottom:16px;width:100%">Làm mới dữ liệu</button>
 
-  <div id="loading" class="loading">Đang tải số liệu…</div>
+  <div id="loading" class="loading">Đang tải dữ liệu…</div>
 
   <div id="content" style="display:none">
     <div class="kpi">
-      <div class="box"><div class="n" id="kDay">0</div><div class="l">Lượt đi làm (ngày xem)</div></div>
-      <div class="box"><div class="n" id="kWeek">0</div><div class="l">Lượt trong tuần</div></div>
-      <div class="box"><div class="n" id="kMonth">0</div><div class="l">Lượt trong tháng</div></div>
-      <div class="box"><div class="n" id="kBp">0</div><div class="l">Bộ phận có người (ngày)</div></div>
+      <div class="box"><div class="n" id="kTotal">0</div><div class="l">Tổng lượt đã ghi</div></div>
+      <div class="box"><div class="n" id="kShown">0</div><div class="l">Đang hiển thị</div></div>
     </div>
 
     <div class="panel">
-      <h2>Số lượt mỗi người (trong tháng)</h2>
-      <table><thead><tr><th>Họ tên</th><th>Bộ phận</th><th class="num">Tổng lượt</th><th class="num">Thứ 7</th><th class="num">16-18h</th><th class="num">T7 Sáng</th><th class="num">T7 Chiều</th><th class="num">T7 Cả ngày</th><th class="num">16-18h (x)</th></tr></thead>
-      <tbody id="tbNguoi"></tbody></table>
-      <div class="empty" id="emNguoi" style="display:none">Chưa có dữ liệu trong tháng.</div>
-    </div>
-
-    <div class="panel">
-      <h2>Số người đi làm theo bộ phận (ngày xem)</h2>
-      <table><thead><tr><th>Bộ phận</th><th class="num">Số người</th></tr></thead>
-      <tbody id="tbBp"></tbody></table>
-      <div class="empty" id="emBp" style="display:none">Ngày này chưa có chấm công.</div>
-    </div>
-
-    <div class="panel">
-      <h2>Chi tiết ngày xem</h2>
-      <table><thead><tr><th>Bộ phận</th><th>Họ tên</th><th>Loại</th><th>Ghi chú / đổi ca</th></tr></thead>
-      <tbody id="tbChiTiet"></tbody></table>
-      <div class="empty" id="emChiTiet" style="display:none">Ngày này chưa có chấm công.</div>
+      <h2>Dữ liệu chấm công mới nhất</h2>
+      <p style="color:#64748b;font-size:13px;margin:-8px 0 12px">Hiển thị 50 dòng gần nhất — mới nhất ở trên cùng.</p>
+      <div style="overflow-x:auto">
+      <table class="recent-table">
+        <thead><tr>
+          <th class="stt">#</th>
+          <th>Thời gian gửi</th>
+          <th>Ngày</th>
+          <th>Ca</th>
+          <th>Bộ phận</th>
+          <th>Họ tên</th>
+          <th>Loại</th>
+          <th>Người chấm</th>
+          <th>Ghi chú</th>
+        </tr></thead>
+        <tbody id="tbRecent"></tbody>
+      </table>
+      </div>
+      <div class="empty" id="emRecent" style="display:none">Chưa có dữ liệu chấm công nào.</div>
     </div>
   </div>
 </div>
 
 <script src="config.js"></script>
 <script>
-var today=new Date(),tz=today.getTimezoneOffset()*60000;
-document.getElementById('ngay').value=new Date(today-tz).toISOString().slice(0,10);
-document.getElementById('thang').value=new Date(today-tz).toISOString().slice(0,7);
 document.getElementById('reload').onclick=load;
 load();
 
 function load(){
   show(document.getElementById('loading'),true);
   document.getElementById('content').style.display='none';
-  var ngay=document.getElementById('ngay').value;
-  var thang=document.getElementById('thang').value;
-  var url=APP_CONFIG.API_URL+'?action=stats&ngay='+encodeURIComponent(ngay)+'&thang='+encodeURIComponent(thang);
+  var url=APP_CONFIG.API_URL+'?action=recent&limit=50';
   fetch(url).then(r=>r.json()).then(render).catch(function(e){
     document.getElementById('loading').textContent='Lỗi tải: '+e.message+' — kiểm tra API_URL.';
   });
@@ -78,33 +85,44 @@ function render(d){
   show(document.getElementById('loading'),false);
   document.getElementById('content').style.display='block';
   document.getElementById('upd').textContent='Cập nhật: '+(d.capNhat||'');
-  set('kDay',d.dDay); set('kWeek',d.dWeek); set('kMonth',d.dMonth); set('kBp',(d.theoBoPhan||[]).length);
+  set('kTotal',d.total||0);
+  set('kShown',(d.rows||[]).length);
 
-  var tn=document.getElementById('tbNguoi');
-  if((d.theoNguoi||[]).length){ document.getElementById('emNguoi').style.display='none';
-    tn.innerHTML=d.theoNguoi.map(x=>'<tr><td>'+esc(x.hoten)+'</td><td>'+esc(x.bp)+'</td>'+
-      '<td class="num"><b>'+x.lan+'</b></td>'+
-      '<td class="num">'+fmt(x.thu7)+'</td><td class="num">'+fmt(x.c1618)+'</td>'+
-      '<td class="num">'+fmt(x.t7s)+'</td><td class="num">'+fmt(x.t7c)+'</td>'+
-      '<td class="num">'+fmt(x.t7cn)+'</td><td class="num">'+fmt(x.n1618)+'</td></tr>').join('');
-  } else { tn.innerHTML=''; document.getElementById('emNguoi').style.display='block'; }
+  var tb=document.getElementById('tbRecent');
+  var rows=d.rows||[];
+  if(!rows.length){
+    tb.innerHTML='';
+    document.getElementById('emRecent').style.display='block';
+    return;
+  }
+  document.getElementById('emRecent').style.display='none';
 
-  var tb=document.getElementById('tbBp');
-  if((d.theoBoPhan||[]).length){ document.getElementById('emBp').style.display='none';
-    tb.innerHTML=d.theoBoPhan.map(x=>'<tr><td>'+esc(x.bp)+'</td><td class="num">'+x.so+'</td></tr>').join('');
-  } else { tb.innerHTML=''; document.getElementById('emBp').style.display='block'; }
-
-  var tc=document.getElementById('tbChiTiet');
-  if((d.chiTietNgay||[]).length){ document.getElementById('emChiTiet').style.display='none';
-    tc.innerHTML=d.chiTietNgay.map(function(x){
-      var tag=x.ca==='THU7'?'<span class="tag s7">T7</span>':'<span class="tag s16">16-18</span>';
-      return '<tr><td>'+esc(x.bp)+'</td><td>'+esc(x.hoten)+'</td><td>'+tag+' '+esc(x.loai)+'</td><td>'+esc(x.ghichu||'')+'</td></tr>';
-    }).join('');
-  } else { tc.innerHTML=''; document.getElementById('emChiTiet').style.display='block'; }
+  // Group by ngay+ca+boPhan for visual separation
+  var lastGroup='';
+  var html='';
+  rows.forEach(function(r,i){
+    var group=r.ngay+'|'+r.ca+'|'+r.boPhan;
+    if(group!==lastGroup){
+      var tag=r.ca==='THU7'?'<span class="tag s7">Thứ 7</span>':'<span class="tag s16">16-18h</span>';
+      html+='<tr class="group-head"><td colspan="9">'+tag+' '+esc(r.boPhan)+' — Ngày '+esc(r.ngay)+'</td></tr>';
+      lastGroup=group;
+    }
+    html+='<tr>'+
+      '<td class="stt">'+(i+1)+'</td>'+
+      '<td>'+esc(r.thoiGian)+'</td>'+
+      '<td>'+esc(r.ngay)+'</td>'+
+      '<td>'+(r.ca==='THU7'?'T7':'16-18')+'</td>'+
+      '<td>'+esc(r.boPhan)+'</td>'+
+      '<td><b>'+esc(r.hoten)+'</b></td>'+
+      '<td>'+esc(r.loai)+'</td>'+
+      '<td>'+esc(r.nguoiCham||'')+'</td>'+
+      '<td class="note">'+esc(r.ghiChu||'')+'</td>'+
+    '</tr>';
+  });
+  tb.innerHTML=html;
 }
 
 function set(id,v){document.getElementById(id).textContent=v;}
-function fmt(n){return (Math.round(n*10)/10).toString();}
 function show(el,on){el.style.display=on?'block':'none';}
 function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 </script>
