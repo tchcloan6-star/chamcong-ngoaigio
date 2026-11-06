@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05",
+ "generated": "2026-11-06",
  "ca": {
   "THU7": {
    "label": "Ngày thứ 7",
@@ -68,7 +68,9 @@
   "THƯ KÝ BAN ĐIỀU HÀNH",
   "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG",
   "TRỰC LÃNH ĐẠO",
-  "GHẾ ĐIỀU TRỊ"
+  "GHẾ ĐIỀU TRỊ",
+  "ĐIỀU TRỊ - GÂY MÊ",
+  "ĐIỀU TRỊ - PTHM"
  ],
  "THU7": {
   "TRỰC LÃNH DẠO": [
@@ -1913,6 +1915,478 @@
     "hoten": "Nguyễn Thị Kim Loan",
     "chucvu": "Nhân viên",
     "khoa": "TCHC"
+   }
+  ],
+  "ĐIỀU TRỊ - GÂY MÊ": [
+   {
+    "manv": "NV00128",
+    "hoten": "Phạm Hữu Truyền",
+    "chucvu": "Phó trưởng khoa; Phụ trách điều hành",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00129",
+    "hoten": "Trần Thủy Tú Quỳnh",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00130",
+    "hoten": "Dương Uy Hoàn Vũ",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00131",
+    "hoten": "Trương Phạm Thùy Trang",
+    "chucvu": "ĐD Trưởng khoa",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00132",
+    "hoten": "Hứa Hữu Anh Chi",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00133",
+    "hoten": "Lê Thị Kim Loan",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00134",
+    "hoten": "Huỳnh Thanh Phú",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00135",
+    "hoten": "Lê Thị Ánh Tuyết",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00136",
+    "hoten": "Nguyễn Thị Thanh Tâm",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00137",
+    "hoten": "Nguyễn Thị Ánh Mai",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00138",
+    "hoten": "Bùi Đức Thông",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00139",
+    "hoten": "Lương Tiến Đạt",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00140",
+    "hoten": "Huỳnh Miên Thuấn",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00141",
+    "hoten": "Lê Lâm Linh Chi",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00142",
+    "hoten": "Lê Thị Kim Hồng",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00143",
+    "hoten": "Ngô Mỹ Anh",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00144",
+    "hoten": "Nguyễn Văn Lộc",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00145",
+    "hoten": "Hoàng Thị Ngọc Tâm",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00146",
+    "hoten": "Phan Thị Ngọc Điệp",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00147",
+    "hoten": "Đỗ Thị Thu Ba",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00148",
+    "hoten": "Nguyễn Thị Tuyết Nương",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00149",
+    "hoten": "Nguyễn Thị Như Thùy",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00150",
+    "hoten": "Đinh Thành Phú",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00151",
+    "hoten": "Lê Nguyên Vũ",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00152",
+    "hoten": "Trương Thị Thanh Hà",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00153",
+    "hoten": "Nguyễn Thị Bích Thủy",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00154",
+    "hoten": "Nguyễn Phúc Thịnh",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00155",
+    "hoten": "Nguyễn Thị Thịnh",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00156",
+    "hoten": "Phạm Quang Thể",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00157",
+    "hoten": "Lê Thị Vương Ngọc",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00158",
+    "hoten": "Lương Thị Bích Ngọc",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00159",
+    "hoten": "Trương Ngọc Tùng",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00160",
+    "hoten": "Nguyễn Lương Hải",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   },
+   {
+    "manv": "NV00161",
+    "hoten": "Võ Thế Hân",
+    "chucvu": "Nhân viên",
+    "khoa": "GMHS"
+   }
+  ],
+  "ĐIỀU TRỊ - PTHM": [
+   {
+    "manv": "NV00270",
+    "hoten": "Nguyễn Văn Tuấn",
+    "chucvu": "Trưởng khoa",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00271",
+    "hoten": "Lê Ngọc Tròn",
+    "chucvu": "Phó trưởng khoa",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00272",
+    "hoten": "Nguyễn Thanh Nguyên",
+    "chucvu": "phụ trách phòng khám Hàm Mặt - K.PTHM",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00273",
+    "hoten": "Nguyễn Bạch Dương",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00274",
+    "hoten": "Nguyễn Thanh Dũng",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00275",
+    "hoten": "Lê Hiếu Trọng Anh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00276",
+    "hoten": "Hoàng Quốc Việt",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00277",
+    "hoten": "Bùi Quang Đại",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00278",
+    "hoten": "Nguyễn Thị Thanh Kiều",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00279",
+    "hoten": "Hà Thị Tú Quyên",
+    "chucvu": "Điều dưỡng Phó",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00280",
+    "hoten": "Trần Thùy Vân",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00281",
+    "hoten": "Phạm Thị Mỹ Hạnh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00282",
+    "hoten": "Nguyễn Thị Thùy Loan",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00283",
+    "hoten": "Nguyễn Thị Cẩm Vân",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00284",
+    "hoten": "Lê Thị Kim Hằng",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00285",
+    "hoten": "Lê Thị Ánh Tuyết",
+    "chucvu": "Phụ trách Điều dưỡng Phòng Khám Hàm Mặt - K.PTHM",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00286",
+    "hoten": "Lê Đỗ Thúy Hằng",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00287",
+    "hoten": "Võ Phước Lộc",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00288",
+    "hoten": "Trương Phương Thảo",
+    "chucvu": "Phụ trách Điều dưỡng phòng Cấp cứu - K.PTHM",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00289",
+    "hoten": "Huỳnh Quang Khương",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00290",
+    "hoten": "Thái Phước Tài",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00291",
+    "hoten": "Huỳnh Thị Tuyết Anh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00292",
+    "hoten": "Bùi Thanh Trúc",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00293",
+    "hoten": "Phạm Ngọc Phương Quyên",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00294",
+    "hoten": "Nguyễn Nhất Khôi",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00295",
+    "hoten": "Hà Thị Phương Thảo",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00296",
+    "hoten": "Nguyễn Thị Kim Tiến",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00297",
+    "hoten": "Phạm Thị Thùy Linh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00298",
+    "hoten": "Trần Thị Kim Tuyến",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00299",
+    "hoten": "Lê Thị Trinh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00300",
+    "hoten": "Vũ Huyền Linh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00301",
+    "hoten": "Lê Danh Bình",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00303",
+    "hoten": "Trương Đức Kỳ Trân",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00304",
+    "hoten": "Bùi Hoàng Minh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00305",
+    "hoten": "Mai Thị Thơm",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00306",
+    "hoten": "Trần Thái Bình",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00307",
+    "hoten": "Nguyễn Trương Thùy Linh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00308",
+    "hoten": "Nguyễn Thị Cẩm Nhung",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00309",
+    "hoten": "Đỗ Thị Trúc Phương",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00310",
+    "hoten": "Võ Thanh Phúc",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00311",
+    "hoten": "Lê Thị Yến Khoa",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00312",
+    "hoten": "Nguyễn Thị Xuân Thảo",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00313",
+    "hoten": "Nguyễn Thanh Luân",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
+   },
+   {
+    "manv": "NV00314",
+    "hoten": "Đặng Mai Khanh",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
    }
   ]
  },
