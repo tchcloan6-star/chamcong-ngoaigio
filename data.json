@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06",
+ "generated": "2026-11-13",
  "ca": {
   "THU7": {
    "label": "Ngày thứ 7",
@@ -70,7 +70,8 @@
   "TRỰC LÃNH ĐẠO",
   "GHẾ ĐIỀU TRỊ",
   "ĐIỀU TRỊ - GÂY MÊ",
-  "ĐIỀU TRỊ - PTHM"
+  "ĐIỀU TRỊ - PTHM",
+  "ĐIỀU TRỊ"
  ],
  "THU7": {
   "TRỰC LÃNH DẠO": [
@@ -2388,6 +2389,26 @@
     "chucvu": "Nhân viên",
     "khoa": "PTHM"
    }
+  ],
+  "ĐIỀU TRỊ": [
+   {
+    "manv": "NV_K099_01",
+    "hoten": "Trương Thái Hoàng Anh",
+    "chucvu": "Nhân viên",
+    "khoa": "Hợp tác viện trường"
+   },
+   {
+    "manv": "NV_K099_02",
+    "hoten": "Nguyễn Phước Lợi",
+    "chucvu": "Nhân viên",
+    "khoa": "Hợp tác viện trường"
+   },
+   {
+    "manv": "NV_K099_03",
+    "hoten": "Lê Hoài Phúc",
+    "chucvu": "Nhân viên",
+    "khoa": "Hợp tác viện trường"
+   }
   ]
  },
  "C1618": {
@@ -3275,6 +3296,12 @@
     "hoten": "Nguyễn Thị Tâm",
     "chucvu": "Bác sĩ",
     "khoa": "KHTH"
+   },
+   {
+    "manv": "NV0283",
+    "hoten": "Trần Thái Bình",
+    "chucvu": "Nhân viên",
+    "khoa": "PTHM"
    }
   ],
   "X-QUANG": [
