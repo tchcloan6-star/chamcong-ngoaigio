@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13",
+ "generated": "2026-11-14",
  "ca": {
   "THU7": {
    "label": "Ngày thứ 7",
@@ -277,7 +277,7 @@
    },
    {
     "manv": "NV0034",
-    "hoten": "Vọ Thị Hông Nhi",
+    "hoten": "Võ Thị Hông Nhi",
     "chucvu": "Nhân viên",
     "khoa": "CHRM"
    },
@@ -298,6 +298,12 @@
     "hoten": "Nguyễn Ngọc Minh Thư",
     "chucvu": "Nhân viên",
     "khoa": "CTXH"
+   },
+   {
+    "manv": "NV0026",
+    "hoten": "Nguyễn Thị Kim Loan",
+    "chucvu": "Nhân viên",
+    "khoa": "TCHC"
    }
   ],
   "HÀNH CHÍNH - XQUANG": [
@@ -1908,6 +1914,12 @@
     "hoten": "Bùi Thị Liên",
     "chucvu": "Nhân viên",
     "khoa": "TCHC"
+   },
+   {
+    "manv": "NV00382",
+    "hoten": "Ngô Thị Hường",
+    "chucvu": "Phó trưởng phòng",
+    "khoa": "TC-HC"
    }
   ],
   "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG": [
@@ -3526,6 +3538,12 @@
     "hoten": "Bùi Thị Liên",
     "chucvu": "Nhân viên",
     "khoa": "TCHC"
+   },
+   {
+    "manv": "NV00382",
+    "hoten": "Ngô Thị Hường",
+    "chucvu": "Phó trưởng phòng",
+    "khoa": "TC-HC"
    }
   ],
   "BỘ PHẬN PHỤ TRÁCH CHẤM CÔNG": [
